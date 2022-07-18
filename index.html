@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
 </head>
 <body>
@@ -25,9 +26,12 @@
         </div>
     </div>
     <section class="header">
-        <h1>Where are you planning on visiting?</h1>
-        <div class="search">
-
+        <h1>Plan your next trip</h1>
+        <div class="search-container">
+            <form action="/action_page.php">
+              <input type="text" placeholder="Where to...?" name="search">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
         </div>
     </section>
     <section class="trips">

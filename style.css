@@ -45,8 +45,20 @@ body {
     margin-top: 400px;
     font-size: 40px;
 }
-.search{
-    background: white;
+.header input[type=text]{
     height: 40px;
+    font-size: 25px;
+    width: 80vh;
     margin-bottom: 400px;
+    border: none;
+}
+.header .search-container button {
+    background: tan;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+  }
+  
+.header .search-container button:hover {
+    background:brown;
 }
