@@ -11,10 +11,14 @@
 <body>
 <!-- ONLOAD PAGE ANIMATION -->
     <div class="firstSlider">
-        <i class="fa-solid fa-car-side fa-4x"></i>
+        <i class="fa-solid fa-car-side fa-4x" id="icon1"></i>
     </div>
     <div class="secondSlider">
-        <i class="fa-solid fa-plane-up fa-4x"></i>
+        <i class="fa-solid fa-plane-up fa-4x" id="icon2"></i>
+    </div>
+    <div class="citySlider">
+        <i class="fa-solid fa-apple-whole fa-6x"></i>
+        <h3 class="miles"></h3>
     </div>
 <!-- END OF ONLOAD PAGE ANIMATION -->
     <div class="navBar">
@@ -24,7 +28,7 @@
             </div>
             <div class="slot">
                 <div class="slotOption">
-                    <a></button><i class="fa-solid fa-heart"></i></i></a>
+                    <a></button><i class="fa-solid fa-heart"></i></a>
                 </div>
                 <div class="slotOption">
                     <a><i class="fa-solid fa-plane"></i></a>
@@ -33,7 +37,7 @@
                     <a><i class="fa-solid fa-star"></i></a>
                 </div>
                 <div class="slotOption">
-                    <a><i class="fa-solid fa-moon" onclick="return darkMode()"></i></i></a>
+                    <a><i class="fa-solid fa-moon" onclick="darkMode()"></i></a>
                 </div>
             </div>
         </div>
@@ -41,16 +45,17 @@
     <section class="header">
         <h1 class="headline"></h1>
         <div class="search-container">
-            <input type="text" placeholder="Where to...?" id="search">
-            <button type="submit" onclick="saveName();"><i class="fas fa-search"></i></button>
+            <button type="submit" onclick="getLoc();"><i class="fa-solid fa-location-dot fa-2x"></i></button>
+            <input type="text" placeholder="Where to...?" id="search" list="select"></input>
+            <datalist id = "select">
+                <option value="New York"></option>
+                <option value="San Francisco"></option>
+                <option value="Las Vegas"></option>
+            </datalist>
+            <button type="submit" onclick="saveName();"><i class="fas fa-search fa-2x"></i></button>
         </div>
     </section>
-    <section class="trips">
-
-    </section>
-    <section class="review">
-
-    </section>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha512-DkPsH9LzNzZaZjCszwKrooKwgjArJDiEjA5tTgr3YX4E6TYv93ICS8T41yFHJnnSmGpnf0Mvb5NhScYbwvhn2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha512-0xrMWUXzEAc+VY7k48pWd5YT6ig03p4KARKxs4Bqxb9atrcn2fV41fWs+YXTKb8lD2sbPAmZMjKENiyzM/Gagw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./app.js"></script>
