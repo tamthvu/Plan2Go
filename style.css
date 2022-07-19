@@ -55,12 +55,23 @@ html{
     padding: 7px 16px;
     text-decoration: none;
 }
-
+.slotOption{
+    opacity: 80%;
+    transition: .2s ease-in-out;
+}
+.slotOption:hover{
+    opacity: 100%;
+}
 .logo{
+    opacity: 80%;
     margin-top: 10px;
     margin-left: 10px;
     border-radius: 35px;
     width: 125px;
+    transition: .4s ease-in-out;
+}
+.logo:hover{
+    opacity: 100%;
 }
 
 .header{
@@ -78,7 +89,7 @@ html{
     color:wheat;
     margin-top: 400px;
     font-size: 44px;
-    text-shadow: 2px 2px  2px #ff0000;
+    text-shadow: 2px 2px  2px black;
     font-weight: 100;
 }
 .header input[type=text]{
@@ -99,4 +110,20 @@ html{
   
 .header .search-container button:hover {
     background:wheat;
+}
+.headline{
+    gap: 6px;
+}
+.headline::after{
+    content: "";
+    width: 10px;
+    height: 33px;
+    background: wheat;
+    display: inline-block;
+    animation: cursor-blink 1.1s steps(2) infinite;
+}
+@keyframes cursor-blink{
+    0%{
+        opacity: 0;
+    }
 }

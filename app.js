@@ -7,12 +7,12 @@ const headline = document.querySelector('.headline');
 
 const tl = new TimelineMax();
 
-tl.fromTo(slider1, 1.5, {x: "0%"}, {x: "100%"},"+=.6")
-    .fromTo(slider2, 1, {y: "0%"}, {y:"-100%"})
+tl.fromTo(slider1, .9, {x: "0%"}, {x: "100%"},"+=.6")
+    .fromTo(slider2, .8, {y: "0%"}, {y:"-100%"},"-=.1")
     .fromTo(navBar, 1, {y: "-100%"}, {y:"0%"});
 
 var i = 0;
-var txt = 'Plan your next trip';
+var txt = 'Plan your next trip ';
 var speed = 70;
 var x = 0;
 var checker = 0;
