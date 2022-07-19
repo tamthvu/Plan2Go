@@ -24,13 +24,16 @@
             </div>
             <div class="slot">
                 <div class="slotOption">
-                    <a href="#likes"><i class="fa-solid fa-heart"></i></i></a>
+                    <a></button><i class="fa-solid fa-heart"></i></i></a>
                 </div>
                 <div class="slotOption">
-                    <a href="#trips"><i class="fa-solid fa-plane"></i></a>
+                    <a><i class="fa-solid fa-plane"></i></a>
                 </div>
                 <div class="slotOption">
-                    <a href="#reviews"><i class="fa-solid fa-star"></i></a>
+                    <a><i class="fa-solid fa-star"></i></a>
+                </div>
+                <div class="slotOption">
+                    <a><i class="fa-solid fa-moon" onclick="return darkMode()"></i></i></a>
                 </div>
             </div>
         </div>
@@ -38,8 +41,8 @@
     <section class="header">
         <h1 class="headline"></h1>
         <div class="search-container">
-            <input type="text" placeholder="Where to...?" name="search">
-            <button type="submit"><i class="fas fa-search"></i></button>
+            <input type="text" placeholder="Where to...?" id="search">
+            <button type="submit" onclick="saveName();"><i class="fas fa-search"></i></button>
         </div>
     </section>
     <section class="trips">
