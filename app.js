@@ -22,8 +22,6 @@ tl.fromTo(slider1, .9, {x: "0%"}, {x: "100%"},"+=.6")
 var i = 0;
 var txt = 'Plan your next trip ';
 var speed = 70;
-var x = 0;
-var checker = 0;
 
 window.onloadstart = wait();
 
@@ -89,6 +87,16 @@ function getLoc2(position){
 
 /* checks where the nearest city is from the current location
    and how far it is in miles */
+var a = 0;
+var txt1 = 0
+var speed1 = 100;
+function typeWriter2(){
+  if (a < txt1.length) {
+    document.getElementById("search").value += txt1.charAt(a);
+    a++;
+    setTimeout(typeWriter2, speed1);
+  }
+}
 function checkLocation(){
   var index = 0;
   var miles = 0;
@@ -139,4 +147,8 @@ function checkLocation(){
       index = x;
     }
   }
+  txt1 = citiesFile[index].city
+  typeWriter2();
 }
+
+

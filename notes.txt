@@ -8,3 +8,5 @@
 
     * Instead make it so that all you do is click 1 button. It finds the nearest city/town from you and shows the places on a map. It then gets the top places from that location
     Ultimately a sponaneous activity web app.
+
+    * icons rotate on click not on hover only scale and opacity on hover
