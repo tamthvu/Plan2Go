@@ -125,6 +125,14 @@ html{
     color: wheat;
     transition: .3s ease-in-out;
 }
+#search{
+    border-radius: 25px;
+    border: 2px solid #609;
+    text-shadow: 1px 1px 2px black;
+    padding: 20px; 
+    width: 600px;
+    height: 15px;
+}
 .header .search-container button {
     background: transparent;
     cursor: pointer;
@@ -161,4 +169,13 @@ html{
 }
 #select{
     width: 200px;
+}
+
+#map{
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
 }

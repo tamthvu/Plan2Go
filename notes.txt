@@ -10,3 +10,6 @@
     Ultimately a sponaneous activity web app.
 
     * icons rotate on click not on hover only scale and opacity on hover
+
+* or make it so that when you click current location or search it finds a path to where you want to go. Then it finds the shortest path there on a map
+  and shows you places and location surrounding and on the way and when you click them their profiles pop up.

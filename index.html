@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"
+    />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,13 +56,9 @@
         <div class="search-container">
             <button type="submit" onclick="getLoc();"><i class="fa-solid fa-location-dot fa-2x"></i></button>
             <input type="text" placeholder="Where to...?" id="search" list="select"></input>
-            <datalist id = "select">
-                <option value="New York"></option>
-                <option value="San Francisco"></option>
-                <option value="Las Vegas"></option>
-            </datalist>
             <button type="submit" onclick="saveName();"><i class="fas fa-search fa-2x"></i></button>
         </div>
+        <div id="map"></div>
     </section>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha512-DkPsH9LzNzZaZjCszwKrooKwgjArJDiEjA5tTgr3YX4E6TYv93ICS8T41yFHJnnSmGpnf0Mvb5NhScYbwvhn2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
