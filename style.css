@@ -188,22 +188,28 @@ html{
     left: 0;
     margin: 15px 15px;
 }
-#map{
+.citySlot{
+    position: absolute;
+    top: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+}
+.slotPart{
     height: 600px;
     width: 400px;
-    position: relative;
     border-radius: 10%;
-    float: left;
+    display: flex;
+    justify-content: center;
+}
+#map{
+    height: 600px;
+    width: 500px;
+    border-radius: 10%;
 }
 #mapText{
-    width: 40px;
-    height: 50px;
-
-}
-.citySlot{
-    display: flex;
-    width: 90%;
-    margin: 30px;
+    height: 600px;
+    width: 400px;
 }
 #name{
     position: absolute;

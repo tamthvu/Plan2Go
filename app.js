@@ -15,6 +15,7 @@ const search = document.getElementById('search');
 const inputNameSlider = document.getElementById('name');
 const inputMileSlider = document.getElementById('miles');
 const submitButton = document.getElementById('submitButton');
+const cityFlex = document.querySelector('.citySlot');
 var inputLocation = ""
 
 fetch("./cities.json")
@@ -91,18 +92,6 @@ function darkMode(){
   buttons.classList.toggle("dark-mode-buttons");
 }
 
-// MAP
-function initMap(la, lo) {
-  var loc = { lat: la, lng: lo };
-  var map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 12,
-    center: loc,
-  });
-  var marker = new google.maps.Marker({
-    position: loc,
-    map: map,
-  });
-}
 // CHECKS WHAT THE INPUTTED NAME IS ///////////////////////////////////////////////////////////////////////////////
 function saveName(){
   inputLocation = search.value;
@@ -123,7 +112,20 @@ function saveName(){
       pop = citiesFile[x].population;
       inputNameSlider.innerHTML = String(city) + ", " + String(state);
       locationSlider()
-      window.initMap = initMap(lat,long);
+      
+      // MAP /////////////////////////////////////////////////////////////////////////////////////////////
+      var myLatlng = new google.maps.LatLng(lat,long);
+      var mapOptions = {
+        zoom: 12,
+        center: myLatlng
+      }
+      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+      
+      var marker = new google.maps.Marker({
+          position: myLatlng,
+      });
+      /////////////////////////////////////////////////////////////////////////////////////////////////////
+      marker.setMap(map);
     }
   }
   if(found == false){
@@ -138,7 +140,8 @@ function saveName(){
 function locationSlider(){
   search.value = "";
   tl.fromTo(slider3, 1.4, {x: "0%"}, {x: "100%"})
-    .fromTo(inputNameSlider, .8, {y: "0%"}, {y: "-1300%"});
+    .fromTo(inputNameSlider, .8, {y: "0%"}, {y: "-1300%"})
+    .fromTo(cityFlex, .9, {y: "0%"}, {y: "-130%"},"-=.8");
 };
 
 // GETS CURRENT LOCATION OF USER ///////////////////////////////////////////////////////////////////////////////
@@ -211,6 +214,6 @@ function checkLocation(){
     }
   }
   state = citiesFile[index].state;
-  txt2 = 'Current Nearest City > ' + citiesFile[index].city;
+  txt2 = 'Nearest City: ' + citiesFile[index].city;
   typeWriter2();
 }
