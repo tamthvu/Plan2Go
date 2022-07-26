@@ -1,15 +1,7 @@
-* Features
-    - when citys are chosen, bring the sliders back and have a unique icon of the city that was chosen
-    - If city is farther than driving distance make slider the plane otherwise have it be the car
+*****
+DIRECTIONS-
 
-* Ideas
-    - When city is put in, gives a map of the city and using the google maps api it marks locations on there
-    - Also giving a list of places on the side
-
-    * Instead make it so that all you do is click 1 button. It finds the nearest city/town from you and shows the places on a map. It then gets the top places from that location
-    Ultimately a sponaneous activity web app.
-
-    * icons rotate on click not on hover only scale and opacity on hover
-
-* or make it so that when you click current location or search it finds a path to where you want to go. Then it finds the shortest path there on a map
-  and shows you places and location surrounding and on the way and when you click them their profiles pop up.
+    - Always gets your current location
+    - If location is not available, set it to NYC
+    - The user types which city they want to go to
+    - When search or enter is pressed, slider is brung up showing distance in miles to the desired location and a marker showing it on a map

@@ -14,6 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
 </head>
@@ -26,8 +27,17 @@
         <i class="fa-solid fa-plane-up fa-4x" id="icon2"></i>
     </div>
     <div class="citySlider">
-        <i class="fa-solid fa-apple-whole fa-6x"></i>
-        <h3 class="miles"></h3>
+        <i class="fa-solid fa-hand-point-left fa-2x" id="backButton" onclick="closeSlide()"></i>
+        <div class="citySlot">
+            <div class="slotPart">
+                <div id="map"></div>
+            </div>
+            <div class="slotPart">
+                <div class="mapText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima corrupti magnam repellendus ad nihil porro. Nobis laboriosam ad nihil error!</div>
+            </div>
+        </div>
+        <h2 id="name"></h2>
+        <h3 id="pop"></h3>
     </div>
 <!-- END OF ONLOAD PAGE ANIMATION -->
     <div class="navBar">
@@ -37,7 +47,7 @@
             </div>
             <div class="slot">
                 <div class="slotOption">
-                    <a></button><i class="fa-solid fa-heart"></i></a>
+                    <a><i class="fa-solid fa-heart"></i></a>
                 </div>
                 <div class="slotOption">
                     <a><i class="fa-solid fa-plane"></i></a>
@@ -54,10 +64,10 @@
     <section class="header">
         <h1 class="headline"></h1>
         <div class="search-container">
-            <button type="submit" onclick="getLoc();"><i class="fa-solid fa-location-dot fa-2x"></i></button>
             <input type="text" placeholder="Where to...?" id="search" list="select"></input>
-            <button type="submit" onclick="saveName();"><i class="fas fa-search fa-2x"></i></button>
+            <button id="submitButton" type="button" onclick="saveName();"><i class="fas fa-search fa-2x"></i></button>
         </div>
+        <h3 id="currentLocation"></h3>
         <div id="map"></div>
     </section>
     
@@ -72,5 +82,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/plugins/CSSPlugin.min.js" integrity="sha512-Xc+rcY3w0DANwcFGWBcnBf2dw/p5a4IBAKqHdBJScNOnIH+qoQYE6xuWEdW3wiP7Q+XvL9MacrnKkzoP0Kexug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/plugins/BezierPlugin.min.js" integrity="sha512-H0dUDNDv/uVTWqjYbXjaHb5mILJYXUJ9g36b/Ye/Jt/wk1tVPi8M99AEPbPEBkwL/jysKfLg6sN+kvElcJuESw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpGps3zAz3FywWuB2-EgPxb5qHUYO5AIY&callback=initMap&v=weekly"
+    defer
+    ></script>
 </body>
 </html>
