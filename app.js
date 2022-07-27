@@ -16,7 +16,8 @@ const inputNameSlider = document.getElementById('name');
 const inputMileSlider = document.getElementById('miles');
 const submitButton = document.getElementById('submitButton');
 const cityFlex = document.querySelector('.citySlot');
-var inputLocation = ""
+
+var inputLocation = "";
 
 fetch("./cities.json")
 .then(response => {
@@ -38,7 +39,7 @@ function typeWriter() {
 }
 
 var b = 0;
-var txt2 = 0;
+var txt2 = '';
 var speed2 = 120;
 function typeWriter2(){
   if (b < txt2.length) {
@@ -53,11 +54,17 @@ var currentLat = 40.7127837;
 var currentLon = -74.0059413;
 var state = 'New York';
 
+search.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    submitButton.click();
+  }
+});
 // ANIMATION GSAP ///////////////////////////////////////////////////////////////////////////////
 const tl = new TimelineMax();
 
-tl.fromTo(slider1, .9, {x: "0%"}, {x: "100%"},"+=.6")
-  .fromTo(slider2, .8, {y: "0%"}, {y:"-100%"},"-=.1")
+tl.fromTo(slider1, .8, {x: "0%"}, {x: "100%"},"+=.6")
+  .fromTo(slider2, .8, {y: "0%"}, {y:"-100%"})
   .fromTo(navBar, 1, {y: "-100%"}, {y:"0%"},"-=.1");
 
 window.onloadstart = wait();
@@ -71,13 +78,6 @@ function closeSlide(){
   tl.fromTo(slider3, 1, {x: "100%"}, {x: "0%"});
 }
 // DARK MODE ///////////////////////////////////////////////////////////////////////////////
-search.addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    submitButton.click();
-  }
-});
-
 var swap = 0;
 function darkMode(){
   if(swap == 0){
@@ -135,13 +135,16 @@ function saveName(){
       search.placeholder = "Where to...?";
     },2000);
   }
+  if(inputLocation.toLowerCase() == 'fuck you'){
+    search.placeholder = 'fuck you too little bitch 🖕🖕';
+  }
 }
 
 function locationSlider(){
   search.value = "";
   tl.fromTo(slider3, 1.4, {x: "0%"}, {x: "100%"})
     .fromTo(inputNameSlider, .8, {y: "0%"}, {y: "-1300%"})
-    .fromTo(cityFlex, .9, {y: "0%"}, {y: "-130%"},"-=.8");
+    .fromTo(cityFlex, 1, {y: "0%"}, {y: "-125%"},"-=.8");
 };
 
 // GETS CURRENT LOCATION OF USER ///////////////////////////////////////////////////////////////////////////////
@@ -154,7 +157,7 @@ function getLoc(){
 }
 
 // FINDS THE CLOSEST CITY FROM THE USERS CURRENT LOCATION ///////////////////////////////////////////////////////////////////////////////
-citiesFile = 0;
+//citiesFile = 0;
 function getLoc2(position){
   currentLat = position.coords.latitude;
   currentLon = position.coords.longitude;
