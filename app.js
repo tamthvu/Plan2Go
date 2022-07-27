@@ -16,8 +16,7 @@ const inputNameSlider = document.getElementById('name');
 const inputMileSlider = document.getElementById('miles');
 const submitButton = document.getElementById('submitButton');
 const cityFlex = document.querySelector('.citySlot');
-
-var inputLocation = "";
+const mapText = document.getElementById('mapText');
 
 fetch("./cities.json")
 .then(response => {
@@ -93,26 +92,84 @@ function darkMode(){
 }
 
 // CHECKS WHAT THE INPUTTED NAME IS ///////////////////////////////////////////////////////////////////////////////
+var stateLocation = '';
+var inputLocation = "";
+var click = 0;
 function saveName(){
   inputLocation = search.value;
-  var found = false;
+  click ++;
+  var states = '';
   var city = 0;
   var state = 0;
   var lat = 0;
   var long = 0;
   var pop = 0;
+  var sameChecker = 0;
+  
   for(let x = 0; x < citiesFile.length; x++){
-    if(
-      (citiesFile[x].city.toLowerCase() == inputLocation.toLowerCase()) || (citiesFile[x].city.toUpperCase() == inputLocation.toUpperCase())){
-      found = true;
+    if((citiesFile[x].city.toLowerCase() == inputLocation.toLowerCase()) || (citiesFile[x].city.toUpperCase() == inputLocation.toUpperCase())){
+      sameChecker++;
       city = citiesFile[x].city;
       state = citiesFile[x].state;
       lat = citiesFile[x].latitude;
       long = citiesFile[x].longitude;
       pop = citiesFile[x].population;
+
+      states += ' ';
+      states += citiesFile[x].state;
+    }
+  }
+  if(click = true){
+    stateLocation = search.value;
+    alert(stateLocation);
+    alert(inputLocation);
+  }
+  // CHECK IF MULTIPLE CITIES OF SAME NAME ////////////////////////////
+  if(sameChecker > 1){
+    search.value = '';
+    search.placeholder = "Specify -" + String(states) + "?";
+  /////////////////////////////////////////////////////////////////////
+  }
+  if(sameChecker == 1){
+    inputNameSlider.innerHTML = String(city) + ", " + String(state);
+    mapText.innerHTML = 'Population: ' + pop;
+    locationSlider()
+    // MAP /////////////////////////////////////////////////////////////////////////////////////////////
+    var myLatlng = new google.maps.LatLng(lat,long);
+    var mapOptions = {
+      zoom: 12,
+      center: myLatlng
+    }
+    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+    });
+    marker.setMap(map);
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+  }else{
+    search.placeholder = "Not a valid city, please try again.";
+    search.value = '';
+    setTimeout(function(){
+      search.placeholder = "Where to...?";
+    },1500);
+  }
+}
+
+// test newark
+  
+  /*
+  for(let x = 0; x < citiesFile.length; x++){
+    if((stateLocation.toLowerCase() == citiesFile[x].state.toLowerCase()) && (secondClickCity.toLowerCase() == citiesFile[x].city)){
+      state = citiesFile[x].state;
+      city = citiesFile[x].city;
+      lat = citiesFile[x].latitude;
+      long = citiesFile[x].longitude;
+      pop = citiesFile[x].population;
+      found = true;
+      secondClick = 0;
       inputNameSlider.innerHTML = String(city) + ", " + String(state);
       locationSlider()
-      
       // MAP /////////////////////////////////////////////////////////////////////////////////////////////
       var myLatlng = new google.maps.LatLng(lat,long);
       var mapOptions = {
@@ -120,25 +177,15 @@ function saveName(){
         center: myLatlng
       }
       var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-      
       var marker = new google.maps.Marker({
-          position: myLatlng,
+        position: myLatlng,
       });
-      /////////////////////////////////////////////////////////////////////////////////////////////////////
       marker.setMap(map);
     }
   }
-  if(found == false){
-    search.placeholder = "Not a valid city, please try again.";
-    search.value = '';
-    setTimeout(function(){
-      search.placeholder = "Where to...?";
-    },2000);
-  }
-  if(inputLocation.toLowerCase() == 'fuck you'){
-    search.placeholder = 'fuck you too little bitch 🖕🖕';
-  }
-}
+  */
+
+
 
 function locationSlider(){
   search.value = "";
