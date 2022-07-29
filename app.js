@@ -110,6 +110,8 @@ function darkMode(){
 var stateLocation = '';
 var inputLocation = "";
 var click = 0;
+var desiredLat = 0;
+var desiredLon = 0;
 function saveName(){
   inputLocation = search.value;
   click ++;
@@ -134,6 +136,9 @@ function saveName(){
       pop = citiesFile[x].population;
       rank = citiesFile[x].rank;
       growth = citiesFile[x].growth_from_2000_to_2013;
+
+      desiredLat = citiesFile[x].latitude;
+      desiredLon = citiesFile[x].longitude;
 
       states += ' ';
       states += citiesFile[x].state;
@@ -288,6 +293,13 @@ function checkLocation(){
   typeWriter2();
 }
 
+// CHOOSING MODE PAGE
+var mode = '';
+var startCity = '';
+var startState = '';
+var endCity = '';
+var endState = '';
+
 function mapSelect(){
   tl.fromTo(selectionSlider, .6, {y: "-200%"}, {y: "-100%"});
 };
@@ -312,4 +324,63 @@ function backSelection(){
   tl.to(selection3, .15, {x: "0%"});
   tl.to(selection4, .15, {y: "0%"});
   tl.to(selection5, .15, {x: "0%"});
+}
+
+function walkMode(){
+  mode = 'WALKING';
+  tl.to(selection3, .15, {x: "0%"});
+  tl.to(selection4, .15, {y: "0%"});
+  tl.to(selection5, .15, {x: "0%"});
+  calcRoute()
+
+}
+
+function carMode(){
+  mode = 'DRIVING';
+  tl.to(selection4, .15, {y: "0%"});
+  tl.to(selection5, .15, {x: "0%"});
+  tl.to(selection2, .15, {y: "0%"});
+  calcRoute()
+}
+
+function bikeMode(){
+  mode = 'BICYCLING';
+  tl.to(selection2, .15, {y: "0%"});
+  tl.to(selection3, .15, {x: "0%"});
+  tl.to(selection5, .15, {x: "0%"});
+  calcRoute()
+}
+
+function trainMode(){
+  mode = 'TRANSIT';
+  tl.to(selection2, .15, {y: "0%"});
+  tl.to(selection3, .15, {x: "0%"});
+  tl.to(selection4, .15, {y: "0%"});
+  calcRoute()
+}
+
+function initMap() {
+  var directionsService = new google.maps.DirectionsService();
+  var directionsRenderer = new google.maps.DirectionsRenderer();
+  var myLatlng = new google.maps.LatLng(currentLat,currentLon);
+  var mapOptions = {
+    zoom:10,
+    center: myLatlng
+  }
+  var map = new google.maps.Map(document.getElementById('map2'), mapOptions);
+  directionsRenderer.setMap(map);
+}
+
+function calcRoute(){
+  initMap()
+  var directions = {
+    origin: startCity + ', ' + startState,
+    destination: endCity + ', ' + endState,
+    travelMode: mode
+  };
+  directionsService.route(directions, function(result, status) {
+    if(status == 'OK'){
+      directionsRenderer.setDirections(result);
+    }
+  });
 }

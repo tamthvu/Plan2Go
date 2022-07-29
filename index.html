@@ -16,6 +16,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+    <!-- end -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Plan2Go</title>
 </head>
@@ -46,10 +51,11 @@
         <i class="fa-regular fa-hand-point-up fa-2x" id="selectionBackButton" onclick="closeSelection()"></i>
         <i class="fa-solid fa-arrow-rotate-left fa-2x" id="undoButton" onclick="backSelection()"></i>
         <div id="selectionIcon1" onclick="openOptions()">MODE</div>
-        <div id="selectionIcon2"><i class="fa-solid fa-person-walking fa-2x"></i></div>
-        <div id="selectionIcon3"><i class="fa-solid fa-car fa-2x"></i></div>
-        <div id="selectionIcon4"><i class="fa-solid fa-person-biking fa-2x"></i></div>
-        <div id="selectionIcon5"><i class="fa-solid fa-train-subway fa-2x"></i></div>
+        <div id="selectionIcon2" onclick="walkMode()"><i class="fa-solid fa-person-walking fa-2x"></i></div>
+        <div id="selectionIcon3" onclick="carMode()"><i class="fa-solid fa-car fa-2x"></i></div>
+        <div id="selectionIcon4" onclick="bikeMode()"><i class="fa-solid fa-person-biking fa-2x"></i></div>
+        <div id="selectionIcon5" onclick="trainMode()"><i class="fa-solid fa-train-subway fa-2x"></i></div>
+        <div id="map2"></div>
     </div>
 <!-- END OF ONLOAD PAGE ANIMATION -->
     <div class="navBar">
