@@ -1,0 +1,7 @@
+*****
+DIRECTIONS-
+
+    - Always gets your current location
+    - If location is not available, set it to NYC
+    - The user types which city they want to go to
+    - When search or enter is pressed, slider is brung up showing distance in miles to the desired location and a marker showing it on a map
