@@ -31,6 +31,7 @@ const selection1 = document.getElementById('selectionIcon1');
 const selection2 = document.getElementById('selectionIcon2');
 const selection3 = document.getElementById('selectionIcon3');
 const selection4 = document.getElementById('selectionIcon4');
+const selection5 = document.getElementById('selectionIcon5');
 
 fetch("./cities.json")
 .then(response => {
@@ -296,16 +297,19 @@ function closeSelection(){
   tl.to(selection2, .15, {y: "0%"});
   tl.to(selection3, .15, {x: "0%"});
   tl.to(selection4, .15, {y: "0%"});
+  tl.to(selection5, .15, {x: "0%"});
 };
 
 function openOptions(){
   tl.to(selection2, .2, {y: "-122%"});
   tl.to(selection3, .2, {x: "-122%"});
   tl.to(selection4, .2, {y: "122%"});
+  tl.to(selection5, .2, {x: "122%"});
 }
 
 function backSelection(){
   tl.to(selection2, .15, {y: "0%"});
   tl.to(selection3, .15, {x: "0%"});
   tl.to(selection4, .15, {y: "0%"});
+  tl.to(selection5, .15, {x: "0%"});
 }

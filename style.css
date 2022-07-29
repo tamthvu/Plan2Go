@@ -358,3 +358,23 @@ html{
     background-color: lightsalmon;
     margin-top: 9px;
 }
+#selectionIcon5{
+    position: absolute;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: tan;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    font-size: 20px;
+}
+#selectionIcon5:hover{
+    transition: .1s ease-in-out;
+    transform: scale(1.03);
+    background-color: lightsalmon;
+    margin-left: 9px;
+}
