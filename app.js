@@ -2,21 +2,35 @@
 const slider1 = document.querySelector('.firstSlider');
 const slider2 = document.querySelector('.secondSlider');
 const slider3 = document.querySelector('.citySlider');
+
 const navBar = document.querySelector('.navBar');
 const car = document.querySelector('.fa-solid fa-car-side');
 const plane = document.querySelector('.fa-solid fa-plane-up');
 const headline = document.querySelector('.headline');
+
 const icons = document.querySelector('.navOptions');
 const body = document.querySelector('body');
+
 const buttons = document.querySelector('.search-container');
 const mapIcon = document.getElementById("map");
 const currentLoc = document.getElementById('currentLocation');
 const search = document.getElementById('search');
+
 const inputNameSlider = document.getElementById('name');
 const inputMileSlider = document.getElementById('miles');
+
 const submitButton = document.getElementById('submitButton');
 const cityFlex = document.querySelector('.citySlot');
-const mapText = document.getElementById('mapText');
+
+const popText = document.getElementById('population');
+const growthText = document.getElementById('growth');
+const rankText = document.getElementById('rank');
+
+const selectionSlider = document.querySelector('.selectionSlider');
+const selection1 = document.getElementById('selectionIcon1');
+const selection2 = document.getElementById('selectionIcon2');
+const selection3 = document.getElementById('selectionIcon3');
+const selection4 = document.getElementById('selectionIcon4');
 
 fetch("./cities.json")
 .then(response => {
@@ -105,6 +119,9 @@ function saveName(){
   var long = 0;
   var pop = 0;
   var sameChecker = 0;
+  var rank = 0;
+  var growth = 0;
+
   
   for(let x = 0; x < citiesFile.length; x++){
     if((citiesFile[x].city.toLowerCase() == inputLocation.toLowerCase()) || (citiesFile[x].city.toUpperCase() == inputLocation.toUpperCase())){
@@ -114,6 +131,8 @@ function saveName(){
       lat = citiesFile[x].latitude;
       long = citiesFile[x].longitude;
       pop = citiesFile[x].population;
+      rank = citiesFile[x].rank;
+      growth = citiesFile[x].growth_from_2000_to_2013;
 
       states += ' ';
       states += citiesFile[x].state;
@@ -121,8 +140,6 @@ function saveName(){
   }
   if(click = true){
     stateLocation = search.value;
-    alert(stateLocation);
-    alert(inputLocation);
   }
   // CHECK IF MULTIPLE CITIES OF SAME NAME ////////////////////////////
   if(sameChecker > 1){
@@ -132,7 +149,9 @@ function saveName(){
   }
   if(sameChecker == 1){
     inputNameSlider.innerHTML = String(city) + ", " + String(state);
-    mapText.innerHTML = 'Population: ' + pop;
+    popText.innerHTML = 'Population: ' + pop;
+    growthText.innerHTML = 'Populator growth from 2000-2013: ' + growth;
+    rankText.innerHTML = 'Population Rank: ' + rank;
     locationSlider()
     // MAP /////////////////////////////////////////////////////////////////////////////////////////////
     var myLatlng = new google.maps.LatLng(lat,long);
@@ -266,4 +285,27 @@ function checkLocation(){
   state = citiesFile[index].state;
   txt2 = 'Nearest City: ' + citiesFile[index].city;
   typeWriter2();
+}
+
+function mapSelect(){
+  tl.fromTo(selectionSlider, .6, {y: "-200%"}, {y: "-100%"});
+};
+
+function closeSelection(){
+  tl.fromTo(selectionSlider, .9, {y: "-100%"}, {y: "-200%"});
+  tl.to(selection2, .15, {y: "0%"});
+  tl.to(selection3, .15, {x: "0%"});
+  tl.to(selection4, .15, {y: "0%"});
+};
+
+function openOptions(){
+  tl.to(selection2, .2, {y: "-122%"});
+  tl.to(selection3, .2, {x: "-122%"});
+  tl.to(selection4, .2, {y: "122%"});
+}
+
+function backSelection(){
+  tl.to(selection2, .15, {y: "0%"});
+  tl.to(selection3, .15, {x: "0%"});
+  tl.to(selection4, .15, {y: "0%"});
 }

@@ -187,6 +187,10 @@ html{
     top: 0;
     left: 0;
     margin: 15px 15px;
+    transition: .2s ease-in-out;
+}
+#backButton:hover{
+    margin-left: 11px;
 }
 .citySlot{
     position: absolute;
@@ -199,18 +203,158 @@ html{
     height: 600px;
     width: 400px;
     border-radius: 10%;
-    display: flex;
+    display: inline-block;
     justify-content: center;
+    align-items: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 #map{
     height: 600px;
-    width: 500px;
+    width: 400px;
     border-radius: 10%;
 }
-#mapText{
-    height: 600px;
+.mapText{
+    display: flex;
+    align-items: center;
     width: 400px;
+    height: 130px;
+    border-radius: 10px;
 }
 #name{
     position: absolute;
+}
+#goButton{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: wheat;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    font-size: 30px;
+}
+#goButton:hover{
+    background-color: tan;
+    transform: scale(1.07);
+    font-size: 50px;
+}
+.selectionSlider{
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    display: flex;
+    background-color: black;
+    top: 100%;
+    opacity: 92%;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 4;
+}
+#selectionBackButton{
+    color: wheat;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 15px 15px;
+    transition: .2s ease-in-out;
+}
+#selectionBackButton:hover{
+    margin-top: 11px;
+}
+#undoButton{
+    color: wheat;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 15px 60px;
+    transition: .2s ease-in-out;
+}
+#undoButton:hover{
+    margin-top: 11px;
+}
+#selectionIcon1{
+    position: absolute;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: tan;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    font-size: 20px;
+    z-index: 2;
+}
+#selectionIcon1:hover{
+    transition: .1s ease-in-out;
+    transform: scale(1.03);
+    background-color: lightsalmon;
+}
+#selectionIcon2{
+    position: absolute;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: tan;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    font-size: 20px;
+}
+#selectionIcon2:hover{
+    transition: .1s ease-in-out;
+    transform: scale(1.03);
+    background-color: lightsalmon;
+    margin-bottom: 9px;
+}
+#selectionIcon3{
+    position: absolute;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: tan;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    font-size: 20px;
+}
+#selectionIcon3:hover{
+    transition: .1s ease-in-out;
+    transform: scale(1.03);
+    background-color: lightsalmon;
+    margin-right: 9px;
+}
+#selectionIcon4{
+    position: absolute;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: tan;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    font-size: 20px;
+}
+#selectionIcon4:hover{
+    transition: .1s ease-in-out;
+    transform: scale(1.03);
+    background-color: lightsalmon;
+    margin-top: 9px;
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="icon.png">
     <script
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"
@@ -16,7 +17,7 @@
     <link rel="stylesheet" href="./style.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Document</title>
+    <title>Plan2Go</title>
 </head>
 <body>
 <!-- ONLOAD PAGE ANIMATION -->
@@ -33,10 +34,21 @@
                 <div id="map"></div>
             </div>
             <div class="slotPart">
-                <div id="mapText"></div>
+                <div class="mapText" id="population"></div>
+                <div class="mapText" id="growth"></div>
+                <div class="mapText" id="rank"></div>
+                <div class="mapText" id="goButton" onclick="mapSelect()">GO!</div>
             </div>
         </div>
         <h2 id="name"></h2>
+    </div>
+    <div class="selectionSlider">
+        <i class="fa-regular fa-hand-point-up fa-2x" id="selectionBackButton" onclick="closeSelection()"></i>
+        <i class="fa-solid fa-arrow-rotate-left fa-2x" id="undoButton" onclick="backSelection()"></i>
+        <div id="selectionIcon1" onclick="openOptions()">MODE</div>
+        <div id="selectionIcon2"><i class="fa-solid fa-person-walking fa-2x"></i></div>
+        <div id="selectionIcon3"><i class="fa-solid fa-car fa-2x"></i></div>
+        <div id="selectionIcon4"><i class="fa-solid fa-person-biking fa-2x"></i></div>
     </div>
 <!-- END OF ONLOAD PAGE ANIMATION -->
     <div class="navBar">
