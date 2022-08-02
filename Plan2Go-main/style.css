@@ -71,6 +71,7 @@ html{
     margin-top: 17px;
     opacity: 80%;
     transition: .3s ease-in-out;
+    font-size: 40px;
 }
 .slotOption:hover{
     opacity: 100%;
@@ -187,6 +188,10 @@ html{
     top: 0;
     left: 0;
     margin: 15px 15px;
+    transition: .2s ease-in-out;
+}
+#backButton:hover{
+    margin-left: 11px;
 }
 .citySlot{
     position: absolute;
@@ -233,6 +238,196 @@ html{
     font-size: 30px;
 }
 #goButton:hover{
+    background-color: black;
     transform: scale(1.07);
-    font-size: 40px;
+    font-size: 50px;
+    color: lemonchiffon;
+}
+.selectionSlider{
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    display: flex;
+    background-color: black;
+    top: 100%;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 4;
+}
+#selectionBackButton{
+    color: wheat;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 15px 15px;
+    transition: .2s ease-in-out;
+}
+#selectionBackButton:hover{
+    margin-top: 11px;
+}
+#backHomeButton{
+    color: wheat;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 15px 15px;
+    transition: .2s ease-in-out;
+}
+#backHomeButton:hover{
+    margin-top: 11px;
+}
+#undoButton{
+    color: wheat;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 15px 60px;
+    transition: .2s ease-in-out;
+}
+#undoButton:hover{
+    margin-top: 11px;
+}
+#selectionIcon1{
+    position: absolute;
+    font-family: 'Mochiy Pop One', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: tan;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    font-size: 15px;
+    z-index: 2;
+}
+#selectionIcon1:hover{
+    transition: .1s ease-in-out;
+    background-color: lightsalmon;
+}
+#selectionIcon2{
+    position: absolute;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: tan;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    font-size: 20px;
+}
+#selectionIcon2:hover{
+    transition: .2s ease-in-out;
+    transform: scale(1.03);
+    background-color: lightsalmon;
+    margin-bottom: 12px;
+}
+#selectionIcon3{
+    position: absolute;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: tan;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    font-size: 20px;
+}
+#selectionIcon3:hover{
+    transition: .2s ease-in-out;
+    transform: scale(1.03);
+    background-color: lightsalmon;
+    margin-right: 12px;
+}
+#selectionIcon4{
+    position: absolute;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: tan;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    font-size: 20px;
+}
+#selectionIcon4:hover{
+    transition: .2s ease-in-out;
+    transform: scale(1.03);
+    background-color: lightsalmon;
+    margin-top: 12px;
+}
+#selectionIcon5{
+    position: absolute;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: tan;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    font-size: 20px;
+}
+#selectionIcon5:hover{
+    transition: .2s ease-in-out;
+    transform: scale(1.03);
+    background-color: lightsalmon;
+    margin-left: 12px;
+}
+#map2{
+    position: absolute;
+    width: 90%;
+    height: 90vh;
+    z-index: 5;
+    bottom: -110%;
+    border-radius: 15px;
+}
+.screenSize{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    z-index: 10;
+    color: wheat;
+    font-size: 22px;
+    transition: .3s ease-in-out;
+}
+.screenSize h2{
+    display: inline-block;
+    width: 60vh;
+}
+
+@media(max-width: 1000px){
+    .screenSize{
+        top: 0%;
+    }
+}
+@media(max-width: 600px){
+    .screenSize h2{
+        width: 40vh;
+        font-size: 20px;
+    }
 }
