@@ -1,4 +1,4 @@
-// CONSTANTS ///////////////////////////////////////////////////////////////////////////////
+////////////////// CONSTANTS /////////////////////////////////////////////////////////////
 const slider1 = document.querySelector('.firstSlider');
 const slider2 = document.querySelector('.secondSlider');
 const slider3 = document.querySelector('.citySlider');
@@ -33,13 +33,14 @@ const selection3 = document.getElementById('selectionIcon3');
 const selection4 = document.getElementById('selectionIcon4');
 const selection5 = document.getElementById('selectionIcon5');
 
+const map2 = document.getElementById('map2');
+//////////// JSON FILE //////////////////////////////////////////////////////////////////
 fetch("./cities.json")
 .then(response => {
   return response.json();
 })
 .then(data => citiesFile = data);
-
-// TYPEWRITER ANIMATION FUNCTION ///////////////////////////////////////////////////////////////////////////////
+/////////// TYPEWRITER ANIMATION FUNCTION ///////////////////////////////////////////////
 var a = 0;
 var txt = 'Plan your next trip ';
 var speed = 40;
@@ -62,7 +63,6 @@ function typeWriter2(){
     setTimeout(typeWriter2, speed2);
   }
 }
-
 // INITIALIZED VARIABLES ///////////////////////////////////////////////////////////////////////////////
 var currentLat = 40.7127837;
 var currentLon = -74.0059413;
@@ -77,9 +77,9 @@ search.addEventListener("keypress", function(event) {
 // ANIMATION GSAP ///////////////////////////////////////////////////////////////////////////////
 const tl = new TimelineMax();
 
-tl.fromTo(slider1, .8, {x: "0%"}, {x: "100%"},"+=.6")
-  .fromTo(slider2, .8, {y: "0%"}, {y:"-100%"})
-  .fromTo(navBar, 1, {y: "-100%"}, {y:"0%"},"-=.1");
+tl.fromTo(slider1, .7, {x: "0%"}, {x: "100%"},"+=.6")
+  .fromTo(slider2, .7, {y: "0%"}, {y:"-100%"})
+  .fromTo(navBar, .9, {y: "-100%"}, {y:"0%"},"-=.1");
 
 window.onloadstart = wait();
 window.onloadstart = getLoc();
@@ -89,23 +89,30 @@ function wait(){
 }
 
 function closeSlide(){
-  tl.fromTo(slider3, 1, {x: "100%"}, {x: "0%"});
+  tl.fromTo(slider3, .8, {x: "100%"}, {x: "0%"});
 }
 // DARK MODE ///////////////////////////////////////////////////////////////////////////////
 var swap = 0;
 function darkMode(){
   if(swap == 0){
-    tl.fromTo(slider2, .6, {y: "100%"}, {y: "-100%"});
+    tl.fromTo(slider2, .5, {y: "100%"}, {y: "-100%"});
     swap = 1;
   }else{
-    tl.fromTo(slider1, .5, {x: "-100%"}, {x: "100%"});
+    tl.fromTo(slider1, .4, {x: "-100%"}, {x: "100%"});
     swap = 0;
   }
   body.classList.toggle("dark-mode");
   icons.classList.toggle("dark-mode-icons");
   buttons.classList.toggle("dark-mode-buttons");
 }
-
+// SHUFFLE ///////////////////////////////////////////////////////////////////
+function shuffle(){
+  min = Math.ceil(0);
+  max = Math.floor(citiesFile.length);
+  var num = Math.floor(Math.random() * (max - min) + min);
+  search.value = citiesFile[num].city;
+  saveName();
+}
 // CHECKS WHAT THE INPUTTED NAME IS ///////////////////////////////////////////////////////////////////////////////
 var stateLocation = '';
 var inputLocation = "";
@@ -162,8 +169,9 @@ function saveName(){
     // MAP /////////////////////////////////////////////////////////////////////////////////////////////
     var myLatlng = new google.maps.LatLng(lat,long);
     var mapOptions = {
-      zoom: 12,
-      center: myLatlng
+      zoom: 11,
+      center: myLatlng,
+      gestureHandling: 'none'
     }
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
     
@@ -171,52 +179,22 @@ function saveName(){
       position: myLatlng,
     });
     marker.setMap(map);
+    map.setOptions({draggable: false, scrollwheel: true});
     /////////////////////////////////////////////////////////////////////////////////////////////////////
   }else{
-    search.placeholder = "Not a valid city, please try again.";
+    search.placeholder = "Please try again.";
     search.value = '';
     setTimeout(function(){
       search.placeholder = "Where to...?";
     },1500);
   }
 }
-
-// test newark
-  
-  /*
-  for(let x = 0; x < citiesFile.length; x++){
-    if((stateLocation.toLowerCase() == citiesFile[x].state.toLowerCase()) && (secondClickCity.toLowerCase() == citiesFile[x].city)){
-      state = citiesFile[x].state;
-      city = citiesFile[x].city;
-      lat = citiesFile[x].latitude;
-      long = citiesFile[x].longitude;
-      pop = citiesFile[x].population;
-      found = true;
-      secondClick = 0;
-      inputNameSlider.innerHTML = String(city) + ", " + String(state);
-      locationSlider()
-      // MAP /////////////////////////////////////////////////////////////////////////////////////////////
-      var myLatlng = new google.maps.LatLng(lat,long);
-      var mapOptions = {
-        zoom: 12,
-        center: myLatlng
-      }
-      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-      var marker = new google.maps.Marker({
-        position: myLatlng,
-      });
-      marker.setMap(map);
-    }
-  }
-  */
-
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function locationSlider(){
   search.value = "";
-  tl.fromTo(slider3, 1.4, {x: "0%"}, {x: "100%"})
-    .fromTo(inputNameSlider, .8, {y: "0%"}, {y: "-1300%"})
-    .fromTo(cityFlex, 1, {y: "0%"}, {y: "-125%"},"-=.8");
+  tl.fromTo(slider3, 1, {x: "0%"}, {x: "100%"})
+    .fromTo(inputNameSlider, .67, {y: "0%"}, {y: "-1300%"})
+    .fromTo(cityFlex, 1, {y: "0%"}, {y: "-125%"},"-=.67");
 };
 
 // GETS CURRENT LOCATION OF USER ///////////////////////////////////////////////////////////////////////////////
@@ -301,86 +279,98 @@ var endCity = '';
 var endState = '';
 
 function mapSelect(){
-  tl.fromTo(selectionSlider, .6, {y: "-200%"}, {y: "-100%"});
+  tl.fromTo(selectionSlider, .5, {y: "-200%"}, {y: "-100%"});
 };
 
 function closeSelection(){
-  tl.fromTo(selectionSlider, .9, {y: "-100%"}, {y: "-200%"});
-  tl.to(selection2, .15, {y: "0%"});
-  tl.to(selection3, .15, {x: "0%"});
-  tl.to(selection4, .15, {y: "0%"});
-  tl.to(selection5, .15, {x: "0%"});
+  tl.to(map2, .7, {y: "-300%"});
+  tl.to(selection2, .08, {y: "0%"});
+  tl.to(selection3, .08, {x: "0%"});
+  tl.to(selection4, .08, {y: "0%"});
+  tl.to(selection5, .08, {x: "0%"});
+  tl.fromTo(selectionSlider, .6, {y: "-100%"}, {y: "-200%"},"-=.3");
 };
 
 function openOptions(){
-  tl.to(selection2, .2, {y: "-122%"});
-  tl.to(selection3, .2, {x: "-122%"});
-  tl.to(selection4, .2, {y: "122%"});
-  tl.to(selection5, .2, {x: "122%"});
+  tl.to(selection2, .1, {y: "-122%"});
+  tl.to(selection3, .1, {x: "-122%"});
+  tl.to(selection4, .1, {y: "122%"});
+  tl.to(selection5, .1, {x: "122%"});
 }
 
 function backSelection(){
-  tl.to(selection2, .15, {y: "0%"});
-  tl.to(selection3, .15, {x: "0%"});
-  tl.to(selection4, .15, {y: "0%"});
-  tl.to(selection5, .15, {x: "0%"});
+  tl.to(map2, .7, {y: "-300%"});
+  tl.to(selection2, .1, {y: "0%"},"-=.06");
+  tl.to(selection3, .1, {x: "0%"},"-=.06");
+  tl.to(selection4, .1, {y: "0%"},"-=.06");
+  tl.to(selection5, .1, {x: "0%"},"-=.06");
+}
+
+function backHome(){
+  tl.to(map2, .6, {y: "-300%"});
+  tl.to(selection2, .1, {y: "0%"});
+  tl.to(selection3, .1, {x: "0%"});
+  tl.to(selection4, .1, {y: "0%"});
+  tl.to(selection5, .1, {x: "0%"});
+  tl.fromTo(selectionSlider, .5, {y: "-100%"}, {y: "-200%"},"-=.3");
+  tl.fromTo(slider3, .5, {x: "100%"}, {x: "0%"},"-=.2");
 }
 
 function walkMode(){
   mode = 'WALKING';
-  tl.to(selection3, .15, {x: "0%"});
-  tl.to(selection4, .15, {y: "0%"});
-  tl.to(selection5, .15, {x: "0%"});
-  calcRoute()
+  tl.to(selection3, .1, {x: "0%"});
+  tl.to(selection4, .1, {y: "0%"});
+  tl.to(selection5, .1, {x: "0%"});
+  calcRoute();
 
 }
 
 function carMode(){
   mode = 'DRIVING';
-  tl.to(selection4, .15, {y: "0%"});
-  tl.to(selection5, .15, {x: "0%"});
-  tl.to(selection2, .15, {y: "0%"});
-  calcRoute()
+  tl.to(selection4, .1, {y: "0%"});
+  tl.to(selection5, .1, {x: "0%"});
+  tl.to(selection2, .1, {y: "0%"});
+  calcRoute();
 }
 
 function bikeMode(){
   mode = 'BICYCLING';
-  tl.to(selection2, .15, {y: "0%"});
-  tl.to(selection3, .15, {x: "0%"});
-  tl.to(selection5, .15, {x: "0%"});
-  calcRoute()
+  tl.to(selection2, .1, {y: "0%"});
+  tl.to(selection3, .1, {x: "0%"});
+  tl.to(selection5, .1, {x: "0%"});
+  calcRoute();
 }
 
 function trainMode(){
   mode = 'TRANSIT';
-  tl.to(selection2, .15, {y: "0%"});
-  tl.to(selection3, .15, {x: "0%"});
-  tl.to(selection4, .15, {y: "0%"});
-  calcRoute()
-}
-
-function initMap() {
-  var directionsService = new google.maps.DirectionsService();
-  var directionsRenderer = new google.maps.DirectionsRenderer();
-  var myLatlng = new google.maps.LatLng(currentLat,currentLon);
-  var mapOptions = {
-    zoom:10,
-    center: myLatlng
-  }
-  var map = new google.maps.Map(document.getElementById('map2'), mapOptions);
-  directionsRenderer.setMap(map);
+  tl.to(selection2, .1, {y: "0%"});
+  tl.to(selection3, .1, {x: "0%"});
+  tl.to(selection4, .1, {y: "0%"});
+  calcRoute();
 }
 
 function calcRoute(){
-  initMap()
-  var directions = {
-    origin: startCity + ', ' + startState,
-    destination: endCity + ', ' + endState,
-    travelMode: mode
-  };
-  directionsService.route(directions, function(result, status) {
-    if(status == 'OK'){
-      directionsRenderer.setDirections(result);
-    }
+  const directionsService = new google.maps.DirectionsService();
+  const directionsRenderer = new google.maps.DirectionsRenderer({
+    draggable: false
+  });
+  const map = new google.maps.Map(document.getElementById("map2"), {
+    zoom: 11,
+    center: {lat: desiredLat, lon: desiredLon},
+    gestureHandling: 'none'
+  });
+
+  directionsRenderer.setMap(map);
+  tl.to(map2, .9, {y: "-127%"});
+
+  directionsService.route({
+    origin: currentLat + ',' + currentLon,
+    destination: desiredLat + ',' + desiredLon,
+    travelMode: mode,
+  }).then(response => {
+    directionsRenderer.setDirections(response);
+  }).catch(err => {
+    alert('No directions.');
+    backSelection();
   });
 }

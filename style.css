@@ -71,6 +71,7 @@ html{
     margin-top: 17px;
     opacity: 80%;
     transition: .3s ease-in-out;
+    font-size: 40px;
 }
 .slotOption:hover{
     opacity: 100%;
@@ -228,7 +229,7 @@ html{
     margin-top: 20px;
     display: flex;
     justify-content: center;
-    background-color: wheat;
+    background-color: tan;
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -237,9 +238,10 @@ html{
     font-size: 30px;
 }
 #goButton:hover{
-    background-color: tan;
+    background-color: black;
     transform: scale(1.07);
     font-size: 50px;
+    color: lemonchiffon;
 }
 .selectionSlider{
     align-items: center;
@@ -248,7 +250,6 @@ html{
     display: flex;
     background-color: black;
     top: 100%;
-    opacity: 92%;
     width: 100%;
     height: 100vh;
     position: absolute;
@@ -264,6 +265,18 @@ html{
     transition: .2s ease-in-out;
 }
 #selectionBackButton:hover{
+    margin-top: 11px;
+}
+#backHomeButton{
+    color: wheat;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 15px 15px;
+    transition: .2s ease-in-out;
+}
+#backHomeButton:hover{
     margin-top: 11px;
 }
 #undoButton{
@@ -295,7 +308,6 @@ html{
 }
 #selectionIcon1:hover{
     transition: .1s ease-in-out;
-    transform: scale(1.03);
     background-color: lightsalmon;
 }
 #selectionIcon2{
@@ -313,10 +325,10 @@ html{
     font-size: 20px;
 }
 #selectionIcon2:hover{
-    transition: .1s ease-in-out;
+    transition: .2s ease-in-out;
     transform: scale(1.03);
     background-color: lightsalmon;
-    margin-bottom: 9px;
+    margin-bottom: 12px;
 }
 #selectionIcon3{
     position: absolute;
@@ -333,10 +345,10 @@ html{
     font-size: 20px;
 }
 #selectionIcon3:hover{
-    transition: .1s ease-in-out;
+    transition: .2s ease-in-out;
     transform: scale(1.03);
     background-color: lightsalmon;
-    margin-right: 9px;
+    margin-right: 12px;
 }
 #selectionIcon4{
     position: absolute;
@@ -353,10 +365,10 @@ html{
     font-size: 20px;
 }
 #selectionIcon4:hover{
-    transition: .1s ease-in-out;
+    transition: .2s ease-in-out;
     transform: scale(1.03);
     background-color: lightsalmon;
-    margin-top: 9px;
+    margin-top: 12px;
 }
 #selectionIcon5{
     position: absolute;
@@ -373,15 +385,16 @@ html{
     font-size: 20px;
 }
 #selectionIcon5:hover{
-    transition: .1s ease-in-out;
+    transition: .2s ease-in-out;
     transform: scale(1.03);
     background-color: lightsalmon;
-    margin-left: 9px;
+    margin-left: 12px;
 }
 #map2{
     position: absolute;
-    height: 600px;
-    width: 400px;
-    left: 200px;
-    border-radius: 10%;
+    width: 90%;
+    height: 90vh;
+    z-index: 5;
+    bottom: -110%;
+    border-radius: 15px;
 }

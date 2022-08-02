@@ -49,8 +49,9 @@
     </div>
     <div class="selectionSlider">
         <i class="fa-regular fa-hand-point-up fa-2x" id="selectionBackButton" onclick="closeSelection()"></i>
+        <i class="fa-solid fa-circle-xmark fa-2x" id="backHomeButton" onclick="backHome()"></i>
         <i class="fa-solid fa-arrow-rotate-left fa-2x" id="undoButton" onclick="backSelection()"></i>
-        <div id="selectionIcon1" onclick="openOptions()">MODE</div>
+        <div id="selectionIcon1" onclick="openOptions()"><i class="fa-solid fa-road fa-3x"></i></i></div>
         <div id="selectionIcon2" onclick="walkMode()"><i class="fa-solid fa-person-walking fa-2x"></i></div>
         <div id="selectionIcon3" onclick="carMode()"><i class="fa-solid fa-car fa-2x"></i></div>
         <div id="selectionIcon4" onclick="bikeMode()"><i class="fa-solid fa-person-biking fa-2x"></i></div>
@@ -65,15 +66,6 @@
             </div>
             <div class="slot">
                 <div class="slotOption">
-                    <a><i class="fa-solid fa-heart"></i></a>
-                </div>
-                <div class="slotOption">
-                    <a><i class="fa-solid fa-plane"></i></a>
-                </div>
-                <div class="slotOption">
-                    <a><i class="fa-solid fa-star"></i></a>
-                </div>
-                <div class="slotOption">
                     <a><i class="fa-solid fa-moon" onclick="darkMode()"></i></a>
                 </div>
             </div>
@@ -82,6 +74,7 @@
     <section class="header">
         <h1 class="headline"></h1>
         <div class="search-container">
+            <button id="shuffle" type="button" onclick="shuffle();"><i class="fa-solid fa-shuffle fa-2x"></i></button>
             <input type="text" placeholder="Where to...?" id="search" list="select"></input>
             <button id="submitButton" type="button" onclick="saveName();"><i class="fas fa-search fa-2x"></i></button>
         </div>
@@ -101,8 +94,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/plugins/BezierPlugin.min.js" integrity="sha512-H0dUDNDv/uVTWqjYbXjaHb5mILJYXUJ9g36b/Ye/Jt/wk1tVPi8M99AEPbPEBkwL/jysKfLg6sN+kvElcJuESw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpGps3zAz3FywWuB2-EgPxb5qHUYO5AIY&callback=initMap&v=weekly"
-    defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpGps3zAz3FywWuB2-EgPxb5qHUYO5AIY&callback=initMap&libraries="
+    async
     ></script>
 </body>
 </html>
