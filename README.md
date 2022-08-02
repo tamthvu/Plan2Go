@@ -1,1 +1,1 @@
-#*Plan2Go*
+#Plan2Go
