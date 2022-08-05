@@ -419,6 +419,43 @@ html{
     display: inline-block;
     width: 60vh;
 }
+.column{
+    font-family: 'Mochiy Pop One', sans-serif;
+    display: flex;
+    z-index: 15;
+    width: 45vh;
+    height: 150px;
+    position: absolute;
+    top: -1150px;
+    background-color: wheat;
+    border-radius: 20px;
+    font-size: 13px;
+}
+#megatron{
+    display: inline-block;
+    margin-right: 30px;
+}
+#megatron h2{
+    display: flex;
+    margin-left: 15px;
+    height: 15px;
+    align-items: center;
+    margin-top: 17px;
+}
+
+#originText{
+    font-size: 11px;
+}
+#destinationText{
+    font-size: 11px;
+}
+#durationText{
+    font-size: 11px;
+}
+#distanceText{
+    font-size: 11px;
+}
+
 
 @media(max-width: 1000px){
     .screenSize{

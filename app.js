@@ -33,6 +33,7 @@ const selection3 = document.getElementById('selectionIcon3');
 const selection4 = document.getElementById('selectionIcon4');
 const selection5 = document.getElementById('selectionIcon5');
 
+const megatron = document.getElementById('megatron');
 const map2 = document.getElementById('map2');
 //////////// JSON FILE //////////////////////////////////////////////////////////////////
 fetch("./cities.json")
@@ -119,6 +120,8 @@ var inputLocation = "";
 var click = 0;
 var desiredLat = 0;
 var desiredLon = 0;
+var destinationCity = '';
+var destinationState = '';
 function saveName(){
   inputLocation = search.value;
   click ++;
@@ -146,6 +149,9 @@ function saveName(){
 
       desiredLat = citiesFile[x].latitude;
       desiredLon = citiesFile[x].longitude;
+
+      destinationCity = citiesFile[x].city;
+      destinationState = citiesFile[x].state;
 
       states += ' ';
       states += citiesFile[x].state;
@@ -214,6 +220,8 @@ function getLoc2(position){
   checkLocation();
 }
 
+var originCity = '';
+var originState = '';
 /* checks where the nearest city is from the current location ///////////////////////////////////////////////////////////////////////////////
    and how far it is in miles */
 function checkLocation(){
@@ -266,6 +274,8 @@ function checkLocation(){
       index = x;
     }
   }
+  originCity = citiesFile[index].city;
+  originState = citiesFile[index].state;
   state = citiesFile[index].state;
   txt2 = 'Nearest City: ' + citiesFile[index].city;
   typeWriter2();
@@ -283,6 +293,7 @@ function mapSelect(){
 };
 
 function closeSelection(){
+  tl.to(column, .1, {y: "-100%"});
   tl.to(map2, .7, {y: "-300%"});
   tl.to(selection2, .08, {y: "0%"});
   tl.to(selection3, .08, {x: "0%"});
@@ -299,6 +310,7 @@ function openOptions(){
 }
 
 function backSelection(){
+  tl.to(column, .1, {y: "-100%"});
   tl.to(map2, .7, {y: "-300%"});
   tl.to(selection2, .1, {y: "0%"},"-=.06");
   tl.to(selection3, .1, {x: "0%"},"-=.06");
@@ -307,6 +319,7 @@ function backSelection(){
 }
 
 function backHome(){
+  tl.to(column, .1, {y: "-100%"});
   tl.to(map2, .6, {y: "-300%"});
   tl.to(selection2, .1, {y: "0%"});
   tl.to(selection3, .1, {x: "0%"});
@@ -349,6 +362,12 @@ function trainMode(){
   calcRoute();
 }
 
+const originText = document.getElementById('originText');
+const destinationText = document.getElementById('destinationText');
+const durationText = document.getElementById('durationText');
+const distanceText = document.getElementById('distanceText');
+const column = document.querySelector('.column');
+
 function calcRoute(){
   const directionsService = new google.maps.DirectionsService();
   const directionsRenderer = new google.maps.DirectionsRenderer({
@@ -357,11 +376,9 @@ function calcRoute(){
   const map = new google.maps.Map(document.getElementById("map2"), {
     zoom: 11,
     center: {lat: desiredLat, lon: desiredLon},
-    gestureHandling: 'none'
   });
 
   directionsRenderer.setMap(map);
-  tl.to(map2, .9, {y: "-127%"});
 
   directionsService.route({
     origin: currentLat + ',' + currentLon,
@@ -369,8 +386,15 @@ function calcRoute(){
     travelMode: mode,
   }).then(response => {
     directionsRenderer.setDirections(response);
+    durationText.innerHTML = response.routes[0].legs[0].duration.text;
+    distanceText.innerHTML = response.routes[0].legs[0].distance.text;
+    originText.innerHTML = String(originCity) + ", " + String(originState);
+    destinationText.innerHTML = destinationCity + ", " + destinationState;
+    tl.to(map2, .9, {y: "-127%"});
+    tl.to(column, .6, {y: "766%"},"-=.4");
   }).catch(err => {
-    alert('No directions.');
+    alert('No directions available.');
     backSelection();
   });
 }
+
